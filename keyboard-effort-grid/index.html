@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+
+<title>SteveP's keyboarding pages - Keyboard effort grid</title>
+<meta property="og:title" content="SteveP's keyboarding pages - Keyboard effort grid" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="SteveP's keyboarding pages - Keyboard effort grid" />
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <h1 id="project_title" onclick="location.href = 'https://stevep99.github.io/';">SteveP's&nbsp;&nbsp;keyboarding&nbsp;&nbsp;pages</h1>
+          <!-- <h2 id="project_tagline"></h2> -->
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+
+<h2>Keyboard effort grid: An improved model</h2>
+
+<p>In this article I develop a method of calculating a keyboard effort grid in a more objective and rigorous way than is usual, with the intention of using the generated results in keyboard layout analysis software. If you want to skip over the methodological details, you can <a href="#results">jump direct to the results</a>.</p> 
+
+<a name="background"><h3>Background</h3></a>
+
+<p>Many keyboard analyses use at their heart a way to measure the effort involved a typing each key. This typically involves considering a number of factors, such as the distance a key is from the home position and the finger being used to type the said key. Although these factors seem reasonable, they are often both simplistic and overly subjective.</p>
+
+<figure>
+  <img src="colemak_dh_keyboard_scores.png" alt="Keyboard effort grid used by the Colemak Mod-DH project"/>
+  <figcaption>The keyboard effort grid currently used by the <a href="https://colemakmods.github.io/mod-dh/compare.html">Colemak Mod-DH project</a>.</figcaption>
+</figure>
+
+<p>In keyboard analyses, it's not possible to eliminate personal judgement entirely, so some subjectivity will always be present. Nonetheless, the ease with which each key is typed can be considered in more detail by including relevent factors which are often ignored, and using these factors to construct a systematic model.</p>
+
+<p>Note, any comprehensive keyboard analysis should include more components than just an effort grid: there are influences such as bigrams analysis, hand and finger balance, and rolls/alternation, which also play a part. These factors are outside the scope this article, as the focus here is on one element only: deriving a more accurate and rigorous keyboard effort grid based on real-world hand and keyboard geometry.</p>
+
+<a name="notation"><h3>Notation</h3></a>
+
+To indentify keys by name, they are referred to by their Qwerty labels unless explicitly mentioned.
+
+<a name="finger-lengths"><h3>Finger lengths and Angle of Approach</h3></a>
+
+<p>The home key positions <i>A S D F J K L ;</i> are right underneath the fingers when using classic touch-tying technique. It might be imagined that natural home positions of the fingers therefore corresponds to the centre of these 8 keys. But we know the fingers are not all the same lengths. Indeed, a new generation of column-staggered keyboards has appeared which recognise hand geometry explicitly: the middle fingers are longer, the pinkies shorter, and the ring and index fingers somewhere in between. The geometry of a column-staggered keyboard can be used to inform where the relaxed home-key finger positions naturally lie - in this article I am basing these positions on geometry of the Atreus keyboard since that's what I have to hand, although other column-staggered keyboards have similar designs.</p>
+
+<p float="left" style="text-align: center">
+  <img src="fingers.jpg" alt="Finger stagger" height="200"/>
+  <img src="keyboardio_atreus.png" alt="Keyboardio Atreus" height="200"/> 
+</p>
+
+<p>The hands don't approach the keyboard at right angles to the keyboard (assuming a traditional, non-split type). A comfortable posture should involve laying out the keyboard directly in front of the user, with wrists straight and forearms approaching the keyboard symmetrically and at an angle. Using the Atreus keyboard as an example, it's notable that this assumption is built-in, by virtue of the columns being layed out at a 10° angle relative to vertical. In split and widely separated keyboards, this angle would be unnecessary, but is certainly needed for single-piece keyboards.</p>
+
+<p>Putting these two observations together, we can overlay the staggered key positions of the Atreus, to guide us toward more natural home positions on a standard, staggered keyboard.</p>
+
+<div style="position:relative">
+  <figure id="keyboard_overlay1" style="display:block">
+    <img src="iso_angle_atreus_overlayed.png" alt="Overlayed traditional and column-staggered keyboards"/>
+    <figcaption>The Atreus key positions overlayed on a traditional keyboard. Blue circles are the centre points of key on a traditional keyboard, the red crosses are the centre points of the column-staggered home keys.</figcaption>
+  </figure>
+  <figure id="keyboard_overlay2" style="display:none">
+    <img src="iso_angle_atreus_only.png" alt="Key positions on a column-staggered keyboard"/>
+    <figcaption>The Atreus key positions with red crosses indicating the centre points of the column-staggered home keys.<br/><br/></figcaption>
+  </figure>
+  <div style="text-align:center; position:absolute; top:0px; right:5px;">
+    <input type="checkbox" id="keyboard_overlay_checkbox" checked="checked" onclick="toggleKeyboardOverlays()"/>
+    <label for="keyboard_overlay_checkbox">Overlay toggle</label>
+  </div>
+</div>
+<script>
+  function toggleKeyboardOverlays() {
+    var keyboard_overlay1 = document.getElementById('keyboard_overlay1');
+    var keyboard_overlay2 = document.getElementById('keyboard_overlay2');
+    var showOverlay = document.getElementById('keyboard_overlay_checkbox').checked;
+    if (showOverlay) {
+      keyboard_overlay1.style.display = "block";
+      keyboard_overlay2.style.display = "none";
+    } else {
+      keyboard_overlay1.style.display = "none";
+      keyboard_overlay2.style.display = "block";  
+    }
+  }
+</script>
+
+<table class="center" style="min-width: 450px">
+<tr><th>Home Key</th> <th>X-displacement</th> <th>Y-displacement</th> </tr>
+<tr><td>index</td>    <td>−0.04<i>u</i></td>  <td>−0.34<i>u</i></td> </tr>
+<tr><td>middle</td>   <td>+0.03<i>u</i></td>  <td>+0.14<i>u</i></td> </tr>
+<tr><td>ring</td>     <td>+0.00<i>u</i></td>  <td>+0.05<i>u</i></td> </tr>
+<tr><td>pinky</td>    <td>+0.01<i>u</i></td>  <td>+0.07<i>u</i></td> </tr>
+<caption style="caption-side:bottom">The home positions of the fingers don't naturally coincide with the central home-row axis of a traditional keyboard. Instead, they are displaced mainly vertically - with the middle finger above and the index below - the traditional straight home-row positions. Displacements measured in standard key size units (<i>u</i>).</caption>
+</table>
+
+<p>What's notable is that (i) the ring and pinky finger home positions coincide closely, (ii) the middle finger home position is naturally a bit higher than the centre of the D and K keys, and (iii) the index finger home position is significantly below the centre of the F and J positions, reaching about ⅓ of a key unit towards the bottom row.</p>
+
+<p>My personal observation is that this pattern corresponds closely with what I've noticed in practise. When using a traditional keyboard, it's slightly easier for the index finger to reach the upper row, and also <i>significantly</i> easier for the index finger to reach down the C and M keys.</p>
+
+<a name="finger-strength"><h3>Finger strength</h3></a>
+
+<p>Not all fingers are created equal, and there is broad agreement that the index and middle fingers are strongest, the pinkies the weakest. Quantifying the relative strengths of each finger is a subjective matter, but in this model, the effort to type a given key is multiplied by a factor based on the finger used:</p>
+
+<table class="center">
+<tr><th>Finger</th> <th>Effort Multiplier (P<sub><i>f</i></sub>)</th> </tr>
+<tr><td>index</td> <td>1.0</td> </tr>
+<tr><td>middle</td> <td>1.1</td> </tr>
+<tr><td>ring</td> <td>1.3</td> </tr>
+<tr><td>pinky</td> <td>1.6</td> </tr>
+</table>
+
+<a name="key-size"><h3>Key size</h3></a>
+
+<p>Despite the fact that the index fingers may rest over the lower part of the F and J keys, it's nonetheless easy for those fingers to type their respective home keys. Fingers do not necessarily need to travel to the central point of a key to successfully strike it. This observation becomes especially significant for larger keys: Considering the left-shift key for example, the point at which it is usually pressed is significantly to the right of its midpoint. Instead of basing distance calculations on a key's central point, we should instead consider that there is a region surrounding the central point of key where it can easily be typed. It may be easier hit keys such as E and R slightly to the right of centre to mitigate the wrong-way stagger on the left-half of traditional keyboards.</p>
+
+<p>In this model, an "activation area" in the central part of each key is defined. This central part is defined as a box with margin ⅓u within the key's footprint. To strike a key, the distance travelled is considered to be that which is needed to reach a point within this area, rather than to the exact centre of the key.</p>
+
+<a name="lateral-motion"><h3>Lateral Motion</h3></a>
+
+<p>In common with <a href="https://stevep99.github.io/keyboard-layout-analyzer/">my fork of the patorjk analyzer</a>, this model also assumes lateral motion of the hand is more costly than simply curling a finger inward or outward. Consequently, motions that are <i>transverse</i> to the direction of the forearm are penalized more heavily than directions that are aligned (the <i>mesial</i> direction). Using the geometry of the Atreus keyboard as a guide, the angle-of-approach of the arms is set to 10° from the vertical in this model.</p>
+
+<figure align="center">
+  <img src="iso_angle_approach.png" alt="Angle of approach"/>
+  <figcaption>The hands approach the keyboard with wrists straight, symmetrically, and at an angle. It's relatively easy for fingers to curl inward/outward to reach keys parallel to the green arrows. To reach keys in a transverse direction, indicated with blue arrows, requires the whole hand to move sideways, and therefore attracts a greater effort penalty.</figcaption>
+</figure>
+
+<a name="model"><h3>Creating a new model</h3></a>
+
+<p>Putting these observations together makes it possible to create a new model of keyboard effort grid for any arbitrary keyboard geometry, by calculating the effort values from base principles. In summary, the model works like this:</p>
+
+<ul>
+<li>the effort to type a key is deemed to be a combination of the mesial (x1) and lateral (x2) components of the distance from the home position.</li>
+<li>the distances are calculated based on the finger reaching the nearest point in the "activation area" rather than than the central point on a key.</li>
+<li>the home positions for each finger used in the calculation are informed by natural variation in finger length and the design of column-staggered keyboards.</li>
+<li>the finger used to type each key is not imposed on the model, but rather is determined automatically as the one which minimizes the effort function.</li>
+</ul>
+
+<p>The total effort value for each key, P<sub><i>total</i></sub>, is calculated with the formula:</p>
+<pre style="text-align:center">
+P<sub><i>total</i></sub> = (1.0 + P<sub><i>d</i></sub> (D<sub><i>mesial</i></sub> + 2 D<sub><i>lateral</i></sub>)) * P<sub><i>f</i></sub>
+</pre>
+
+<p>&nbsp;...where P<sub><i>d</i></sub> is a distance-based penalty constant, P<sub><i>f</i></sub> is the finger-based penalty, and D<sub><i>mesial</i></sub>, D<sub><i>lateral</i></sub> are the two components of the distance vector of the key's activation area from the home position.</p>
+
+<a name="results"><h3>Results</h3></a>
+
+<p>Using this new model, the effort scores for each key on the keyboard can be calculated. The finger whose effort score is lowest is also caculated to determine an objective indication of which finger should be used for each key.</p>
+
+<figure id="results_scores1">
+  <img src="keyb_calc_scores.png" alt="The generated keyboard effort grid."/>
+  <figcaption>The generated keyboard effort grid, colour-coded by effort.</figcaption>
+</figure>
+<figure id="results_scores2">
+  <img src="keyb_calc_fingers.png" alt="The generated keyboard effort grid."/>
+  <figcaption>The generated keyboard effort grid, colour-coded by finger that should be used.</figcaption>
+</figure>
+<div style="text-align:center">
+  <input type="radio" id="result_scores1_radio" name="result_scores" checked="checked" onclick="showResultScores(1)"/>
+  <label for="id="result_scores1_radio">Show by score</label>
+  <input type="radio" id="result_scores2_radio" name="result_scores" onclick="showResultScores(2)";>
+  <label for="id="result_scores2_radio">Show by finger</label>
+</div>
+<script>
+  function showResultScores(visibleId) {
+    var results_scores1 = document.getElementById('results_scores1');
+    var results_scores2 = document.getElementById('results_scores2');
+    if (visibleId == 1) {
+      results_scores1.style.display = "block";
+      results_scores2.style.display = "none";
+    } else if (visibleId == 2) {
+      results_scores1.style.display = "none";
+      results_scores2.style.display = "block";  
+    }
+  }
+  showResultScores(1);
+</script>
+
+<p>The results are broadly in line with expectations, favouring home keys and strong fingers directly above and below the home positions. There are also similarities with the current Colemak-DH effort grid shown at the top of the page. But there are some noteworthy observations:</p>
+
+<ul>
+  <li>The top-row left hand positions (W, E, R) are penalised more strongly than the equivalents on the right, due to the wrong-way stagger of traditional keyboards on the left-hand side. However a consequence is that the T position is found to be significantly better than Y.</li>
+  <li>The best non-home keys on the keyboard are still C and M, but the other bottom-row index-finger keys V and N perform better than expected too.</li>
+  <li>The calculated finger assigments suggest middle fingers should be used for keys 4,8,9, index fingers for 5,6,7.</li>
+  <li>Keys on the far-right of the keyboard are costly and should be avoided (e.g. by using mods like <a href="https://colemakmods.github.io/ergonomic-mods/extend.html">Extend</a>, <a href="https://colemakmods.github.io/ergonomic-mods/wide.html">Wide</a>, or both!)</li>
+  
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <!-- <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p> -->
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
+

@@ -800,5 +800,24 @@ form {
 }
 
 figure {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  background-color: #80808020;
+}
+figure img {
+  display: block;
+  margin-left:auto; margin-right:auto;
+  max-width: 600px;
+}
+figcaption {
+	font-size:14px;
+	margin-left:20px; margin-right:20px;
+	text-align:center;
+}
+
+table {
+  margin-left:auto; margin-right:auto;
+}
+caption {
+	font-size:14px;
+	text-align:center;
 }
