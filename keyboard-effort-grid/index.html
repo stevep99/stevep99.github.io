@@ -152,35 +152,37 @@ P<sub><i>total</i></sub> = (1.0 + P<sub><i>d</i></sub> (D<sub><i>mesial</i></sub
 
 <a name="results"><h3>Results</h3></a>
 
+<h4>Traditional Keyboard</h4>
+
 <p>Using this new model, the effort scores for each key on the keyboard can be calculated. The finger whose effort score is lowest is also caculated to determine an objective indication of which finger should be used for each key.</p>
 
-<figure id="results_scores1">
-  <img src="keyb_calc_scores.png" alt="The generated keyboard effort grid."/>
+<figure id="result_iso_scores1">
+  <img src="keyb_calc_iso_scores.png" alt="The generated keyboard effort grid."/>
   <figcaption>The generated keyboard effort grid, colour-coded by effort.</figcaption>
 </figure>
-<figure id="results_scores2">
-  <img src="keyb_calc_fingers.png" alt="The generated keyboard effort grid."/>
+<figure id="result_iso_scores2">
+  <img src="keyb_calc_iso_fingers.png" alt="The generated keyboard effort grid."/>
   <figcaption>The generated keyboard effort grid, colour-coded by finger that should be used.</figcaption>
 </figure>
 <div style="text-align:center">
-  <input type="radio" id="result_scores1_radio" name="result_scores" checked="checked" onclick="showResultScores(1)"/>
-  <label for="id="result_scores1_radio">Show by score</label>
-  <input type="radio" id="result_scores2_radio" name="result_scores" onclick="showResultScores(2)";>
-  <label for="id="result_scores2_radio">Show by finger</label>
+  <input type="radio" id="result_iso_scores1_radio" name="result_scores" checked="checked" onclick="showResultIso(1)"/>
+  <label for="result_iso_scores1_radio">Show by score</label>
+  <input type="radio" id="result_iso_scores2_radio" name="result_scores" onclick="showResultIso(2)";>
+  <label for="result_iso_scores2_radio">Show by finger</label>
 </div>
 <script>
-  function showResultScores(visibleId) {
-    var results_scores1 = document.getElementById('results_scores1');
-    var results_scores2 = document.getElementById('results_scores2');
+  function showResultIso(visibleId) {
+    var result_iso_scores1 = document.getElementById('result_iso_scores1');
+    var result_iso_scores2 = document.getElementById('result_iso_scores2');
     if (visibleId == 1) {
-      results_scores1.style.display = "block";
-      results_scores2.style.display = "none";
+      result_iso_scores1.style.display = "block";
+      result_iso_scores2.style.display = "none";
     } else if (visibleId == 2) {
-      results_scores1.style.display = "none";
-      results_scores2.style.display = "block";  
+      result_iso_scores1.style.display = "none";
+      result_iso_scores2.style.display = "block";  
     }
   }
-  showResultScores(1);
+  showResultIso(1);
 </script>
 
 <p>The results are broadly in line with expectations, favouring home keys and strong fingers directly above and below the home positions. There are also similarities with the current Colemak-DH effort grid shown at the top of the page. But there are some noteworthy observations:</p>
@@ -189,9 +191,52 @@ P<sub><i>total</i></sub> = (1.0 + P<sub><i>d</i></sub> (D<sub><i>mesial</i></sub
   <li>The top-row left hand positions (W, E, R) are penalised more strongly than the equivalents on the right, due to the wrong-way stagger of traditional keyboards on the left-hand side. However a consequence is that the T position is found to be significantly better than Y.</li>
   <li>The best non-home keys on the keyboard are still C and M, but the other bottom-row index-finger keys V and N perform better than expected too.</li>
   <li>The calculated finger assigments suggest middle fingers should be used for keys 4,8,9, index fingers for 5,6,7.</li>
-  <li>Keys on the far-right of the keyboard are costly and should be avoided (e.g. by using mods like <a href="https://colemakmods.github.io/ergonomic-mods/extend.html">Extend</a>, <a href="https://colemakmods.github.io/ergonomic-mods/wide.html">Wide</a>, or both!)</li>
-  
+  <li>Keys on the far-right of the keyboard are costly and should be avoided (e.g. by using mods like <a href="https://colemakmods.github.io/ergonomic-mods/extend.html">Extend</a>, <a href="https://colemakmods.github.io/ergonomic-mods/wide.html">Wide</a>, or both!)</li>  
 </ul>
+
+<h4>Matrix Keyboard</h4>
+
+<p>Since the model can be applied to arbitrary keyboard geometries, it's possible to calculate the effort grid for non-traditional designs, such as this matrix-like layout. In this case the board is assumed to be split, and the user is free to angle each half appropriately, so the model's 10° angle-of-approach factor is not required in this case.</p>
+
+<figure id="result_matrix_scores1">
+  <img src="keyb_calc_matrix_scores.png" alt="The generated keyboard effort grid."/>
+  <figcaption>The generated matrix keyboard effort grid, colour-coded by effort.</figcaption>
+</figure>
+<figure id="result_matrix_scores2">
+  <img src="keyb_calc_matrix_fingers.png" alt="The generated keyboard effort grid."/>
+  <figcaption>The generated matrix keyboard effort grid, colour-coded by finger that should be used.</figcaption>
+</figure>
+<div style="text-align:center">
+  <input type="radio" id="result_matrix_scores1_radio" name="result_matrix_scores" checked="checked" onclick="showResultMatrix(1)"/>
+  <label for="result_matrix_scores1_radio">Show by score</label>
+  <input type="radio" id="result_matrix_scores2_radio" name="result_matrix_scores" onclick="showResultMatrix(2)";>
+  <label for="result_matrix_scores1_radio">Show by finger</label>
+</div>
+<script>
+  function showResultMatrix(visibleId) {
+    var result_matrix_scores1 = document.getElementById('result_matrix_scores1');
+    var result_matrix_scores2 = document.getElementById('result_matrix_scores2');
+    if (visibleId == 1) {
+      result_matrix_scores1.style.display = "block";
+      result_matrix_scores2.style.display = "none";
+    } else if (visibleId == 2) {
+      result_matrix_scores1.style.display = "none";
+      result_matrix_scores2.style.display = "block";  
+    }
+  }
+  showResultMatrix(1);
+</script>
+
+<p></p>
+
+<ul>
+  <li>The scoring pattern is broadly similar to the traditional keyboard, with most differences representing small improvements over the staggered keyboard design.</li>
+  <li>Some keys, such as the bottom-row keys directly under index fingers' home, are even more favoured. However, the T position is notably worse.</li>
+  <li>The calculated finger assignments are in neat columns, as would be expected.</li>
+</ul>
+
+
+
       </section>
     </div>
 
