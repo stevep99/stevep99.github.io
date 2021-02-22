@@ -137,7 +137,7 @@ To indentify keys by name, they are referred to by their Qwerty labels unless ex
 <p>Putting these observations together makes it possible to create a new model of keyboard effort grid for any arbitrary keyboard geometry, by calculating the effort values from base principles. In summary, the model works like this:</p>
 
 <ul>
-<li>the effort to type a key is deemed to be a combination of the mesial (x1) and lateral (x2) components of the distance from the home position.</li>
+<li>the effort to type a key is deemed to be a combination of the mesial and lateral components of the distance from the home position. The mesial component is finger-dependent, representing the finger curling action, whereas the lateral component requires the hand to move, and is more effort (x2).</li>
 <li>the distances are calculated based on the finger reaching the nearest point in the "activation area" rather than than the central point on a key.</li>
 <li>the home positions for each finger used in the calculation are informed by natural variation in finger length and the design of column-staggered keyboards.</li>
 <li>the finger used to type each key is not imposed on the model, but rather is determined automatically as the one which minimizes the effort function.</li>
@@ -145,7 +145,7 @@ To indentify keys by name, they are referred to by their Qwerty labels unless ex
 
 <p>The total effort value for each key, P<sub><i>total</i></sub>, is calculated with the formula:</p>
 <pre style="text-align:center">
-P<sub><i>total</i></sub> = (1.0 + P<sub><i>d</i></sub> (D<sub><i>mesial</i></sub> + 2 D<sub><i>lateral</i></sub>)) * P<sub><i>f</i></sub>
+P<sub><i>total</i></sub> = P<sub><i>f</i></sub> + P<sub><i>d</i></sub> (P<sub><i>f</i></sub> D<sub><i>mesial</i></sub> + 2 D<sub><i>lateral</i></sub>)
 </pre>
 
 <p>&nbsp;...where P<sub><i>d</i></sub> is a distance-based penalty constant, P<sub><i>f</i></sub> is the finger-based penalty, and D<sub><i>mesial</i></sub>, D<sub><i>lateral</i></sub> are the two components of the distance vector of the key's activation area from the home position.</p>
@@ -190,7 +190,7 @@ P<sub><i>total</i></sub> = (1.0 + P<sub><i>d</i></sub> (D<sub><i>mesial</i></sub
 <ul>
   <li>The top-row left hand positions (W, E, R) are penalised more strongly than the equivalents on the right, due to the wrong-way stagger of traditional keyboards on the left-hand side. However a consequence is that the T position is found to be significantly better than Y.</li>
   <li>The best non-home keys on the keyboard are still C and M, but the other bottom-row index-finger keys V and N perform better than expected too.</li>
-  <li>The calculated finger assigments suggest middle fingers should be used for keys 4,8,9, index fingers for 5,6,7.</li>
+  <li>The calculated finger assigments suggest middle fingers should be used for keys 3,4,8,9, index fingers for 5,6,7.</li>
   <li>Keys on the far-right of the keyboard are costly and should be avoided (e.g. by using mods like <a href="https://colemakmods.github.io/ergonomic-mods/extend.html">Extend</a>, <a href="https://colemakmods.github.io/ergonomic-mods/wide.html">Wide</a>, or both!)</li>  
 </ul>
 
@@ -232,9 +232,8 @@ P<sub><i>total</i></sub> = (1.0 + P<sub><i>d</i></sub> (D<sub><i>mesial</i></sub
 <ul>
   <li>The scoring pattern is broadly similar to the traditional keyboard, with most differences representing small improvements over the staggered keyboard design.</li>
   <li>Some keys, such as the bottom-row keys directly under index fingers' home, are even more favoured. However, the T position is notably worse.</li>
-  <li>The calculated finger assignments are in neat columns, as would be expected.</li>
+  <li>The calculated finger assignments are mostly in neat columns, however the model suggests using ring fingers for keys 1 and 0.</li>
 </ul>
-
 
 
       </section>
