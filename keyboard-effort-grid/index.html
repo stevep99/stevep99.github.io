@@ -136,13 +136,13 @@ To identify keys by name, they are referred to by their Qwerty labels unless exp
 
 <p><a href="https://en.wikipedia.org/wiki/Fitts%27s_law">Fitts's Law</a> is a predictive model of human movement which can be used to estimate the time or effort it takes to perform a variety of actions, based on the distance and size of the target.</p>
 
-<p>This observation is used to inform the model of typing. While further-away keys require more effort, it is noted that this can be mitigated to some extent by the size of the <nobr>key &ndash; larger</nobr> keys are relatively easier to hit! Fitts's Law suggests that the distance-based penalty used this model should use a logarithmic, rather than linear scaling, so the formula used for the lateral distance-based penality is this:</p>
+<p>This observation is used to inform the model of typing. Fitts's Law suggests that the distance-based penalty should use logarithmic, rather than linear scaling, so in this model uses the formula used for the lateral distance-based penality is:</p>
 
 <pre style="text-align:center">
-F<sub>x</sub> = Log<sub>2</sub> ( 1 + P<sub><i>d</i></sub> D<sub><i>x</i></sub> / W)
+F<sub>x</sub> = Log<sub>2</sub> ( 1 + P<sub><i>d</i></sub> D<sub><i>x</i></sub>)
 </pre>
 
-<p>&nbsp;...where P<sub><i>d</i></sub> is a distance-based penalty constant, D<sub><i>x</i></sub> is the lateral distance to the target key, and W is the width of the key. The formula for the mesial (<i>y</i>) direction is equivalent.
+<p>&nbsp;...where P<sub><i>d</i></sub> is a distance-based penalty constant, D<sub><i>x</i></sub> is the lateral distance to the target key. The formula for the mesial component (<i>y</i>-direction) is equivalent.
 </p>
 
 </a>
