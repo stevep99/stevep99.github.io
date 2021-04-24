@@ -60,7 +60,7 @@ function showSlide(auto){
 
 <p>Seniply is an ergonomic, minimal keyboard layout for a keyboard with at least 34 keys. The minimum requirement is 30 keys in the main body plus 4 thumb-keys. All the features (and more) of a standard full-size keyboard are available by making use of six layers, which are activated via the thumb keys.</p>
 
-<p>It is designed to be compatible with both small ergo keyboards and traditional keyboards. Special firmware such as QMK isn't required and non-programmable boards are well-supported: the reference implementation is achieved using <a href="https://github.com/david-janssen/kmonad">kmonad</a>.</p> 
+<p>It is designed to be compatible with both small ergo keyboards and traditional keyboards. Special firmware such as QMK isn't required and non-programmable boards are well-supported: the reference implementation is achieved using <a href="https://github.com/david-janssen/kmonad">KMonad</a>.</p> 
 
 <p>See the <a href="#hardware">hardware section</a> below for more details on recommended keyboard types.</p>
 
@@ -161,7 +161,7 @@ function closeModalImage() {
 <a name="download"><h3>Download</h3></a>
 
 <ul>
-  <li><a href="https://github.com/stevep99/kmonad/tree/master/keymap/user/stevep99">Seniply Kmonad</a> - Complete implementation - Recommended!</li>
+  <li><a href="https://github.com/stevep99/kmonad/tree/master/keymap/user/stevep99">Seniply KMonad</a> - Complete implementation - Recommended!</li>
   <li><a href="https://github.com/stevep99/BigBagKbdTrixXKB">Seniply XKB</a> - SteveP's fork of DreymaR's Big Bag for XKB - mostly implemented.</li>
   <li>Seniply AHK - Seniply AutoHotKey (To do!).</li>
 </ul>
@@ -175,7 +175,7 @@ function closeModalImage() {
   <figcaption>The Seniply base layer, using Colemak-DH.</figcaption>
 </figure>
 
-<p>The base alpha layer is <a href="https://colemakmods.github.io/mod-dh/">Colemak-DH</a>, modified slightly so that apostrophe is moved to the semicolon location. Being the more frequent character, apostrophe is more deserving on a spot on the base layer when using a minimalist layout. (Semicolon and colon are still easy to access on a symbols layer). The second layer is the standard Shift layer, and is selected by holding down the inner-left thumb-key, located on the bottom-most row, appoximately below the T key. The space bar is by default on the right thumb.</p>
+<p>The base alpha layer is <a href="https://colemakmods.github.io/mod-dh/">Colemak-DH</a>, modified slightly so that apostrophe is moved to the semicolon location. Being the more frequent character, apostrophe is more deserving on a spot on the base layer when using a minimalist layout. (Semicolon and colon are still easy to access on a symbols layer). The second layer is the standard Shift layer, and is selected by holding down the inner-left thumb-key, located on the bottom-most row, approximately below the T key. The space bar is by default on the right thumb.</p>
 
 <h4>Extend Layer</h4>
 
@@ -184,11 +184,14 @@ function closeModalImage() {
   <figcaption>The Seniply Extend layer, activated with a left-thumb key.<br/>Key: <code>⇧</code>&nbsp;Shift, <code>⎈</code>&nbsp;Ctrl, <code>⎇</code>&nbsp;Alt, <code>RA</code>&nbsp;AltGr</code>, <code>⇪</code>&nbsp;Caps, <code>⇥</code>&nbsp;Tab, <code>⇱ ⇲</code>&nbsp; Home/End, <code>⇞ ⇟</code>&nbsp;Page&nbsp;up/down.</figcaption>
 </figure>
 
-<p>Navigation and other non-printable functions are provided by the Extend layer, which is heavily based on <a href="https://dreymar.colemak.org/extend-layers.html">DreymaR's original</a>. The Extend layer is selected via the left-most thumb key, typically located below the S key. This layer provides navigation, page up/down, home/end on the right hand side, and backspace is assigned to a comfortable spot on a strong index finger (Ext-H).</p>
+<p>Navigation and other non-printable functions are provided by the Extend layer, which is heavily based on <a href="https://dreymar.colemak.org/layers-extend.html">DreymaR's original</a>. The Extend layer is selected via the left-most thumb key, typically located below the S key. This layer provides navigation, page up/down, home/end on the right hand side, and backspace is assigned to a comfortable spot on a strong index finger (Ext-H).</p>
 
-<p>On the left-hand side are home-row modifiers for Alt, Super, Shift, Control and AltGr on A,R,S,T,G respectively. As with DreymaR's Extend, these modifiers can be held down and combined with other Extend functions such as arrows etc, to comfortably produce combinations like <code>Ctrl&nbsp;⌫</code>, <code>Alt&nbsp;←</code>. Importantly though, these home-row modifiers are implemented as one-shot (sticky) keys, which makes it easy to do Control and Alt shortcuts without needing dedicated modifier keys for them.</p>
+<p>On the left-hand side are home-row modifiers for Alt, Super, Shift, Control and AltGr on A,R,S,T,G respectively. As with DreymaR's Extend, these modifiers can be held down and combined with other Extend functions such as arrows etc, to comfortably produce combinations like <code>Ctrl&nbsp;⌫</code>, <code>Alt&nbsp;←</code>. Importantly though, these home-row modifiers are implemented as one-shot (sticky) keys, which makes it easy to do Control and Alt shortcuts without needing dedicated modifier keys.</p>
 
-<p>Examples: (i) Output Ctrl-A using <code>Ext-t&nbsp;a</code> (ii) Output Alt-Tab using <code>Ext-A-D</code>.</p>
+<p>Examples:<br/>
+(i) Output Ctrl-A using <code>Ext-t&nbsp;a</code><br/>
+(ii) Output Ctrl-W using <code>Ext-t&nbsp;w</code><br/>
+(iii) Output Alt-Tab using <code>Ext-a-d</code></p>
 
 <h4>Function Layer</h4>
 
@@ -197,9 +200,11 @@ function closeModalImage() {
   <figcaption>The Seniply Function layer, activated by pressing two-thumb keys.</figcaption>
 </figure>
 
-<p>To accomodate the reduced number of keys, features such as the function keys are located in a separate Function layer. The function keys are on the right-hand side, following a familiar Numpad-like convention for ease of learning. As with the Extend layer, home-row modifiers are available to combine with function keys. The function layer also provides a mechanism to switch between layouts (e.g. to switch to Qwerty for gaming) via the @L1, @L2,... mappings. To access the function layer, the two outmost thumb-keys are held down. Alternatively, on keyboards with good support for multiple thumb keys, you may assign an unused dedicated thumb key for selecting this layer.</p>
+<p>To accomodate the reduced number of keys, the function keys are mapped in a dedicated Function layer. The function keys are on the right-hand side, following a familiar Numpad-like convention for ease of learning. As with the Extend layer, home-row modifiers are available to combine with function keys. The function layer also provides a mechanism to switch between layouts (e.g. to switch to Qwerty for gaming) via the @L1, @L2,... mappings. To access the function layer, the two outmost thumb-keys are held down. Alternatively, on keyboards with good support for multiple thumb keys, you may assign an unused thumb key for selecting this layer.</p>
 
-<p>Example: Output Ctrl-F5 using <code>Ext-Sym-t&nbsp;e</code></p>
+<p>Examples:<br/>
+(i) Output Ctrl-F5 using <code>Ext-Sym-t&nbsp;e</code><br/>
+(ii) Output Alt-F2 using <code>Ext-Sym-a&nbsp;,</code></p>
 
 <h4>Symbols Layer</h4>
 
@@ -259,7 +264,9 @@ function closeModalImage() {
   showSeniplyMatrixSym2(1);
 </script>
 
-<p>The Symbols2 layer has the remaining standard symbols found on keyboards, such as <code>~&nbsp;\&nbsp;|</code>. It also makes available some mathematical symbols not usually found in most layouts, such as <code>½&nbsp;…&nbsp;±&nbsp;÷&nbsp;×</code>, but these can be customized if you have different characters you are more likely to type. When using the kmonad implementation, for these characters to be printed correctly, you must ensure compose key combinations are configured consistently in both kmonad and the OS. A couple of dead-keys have also been added, labelled <code>d'</code> and <code>d¨</code> for producing accented characters such as <code>é</code> and <code>ö</code>. The Symbols2 layer is activiated by first holding the Symbols1 thumb key and then holding down Shift. Again, on keyboards with good thumb key support you could opt to use a dedicated single key instead.</p>
+<p>The Symbols2 layer has the remaining standard symbols found on keyboards, such as <code>~&nbsp;\&nbsp;|</code>. It also makes available some mathematical symbols not usually found in most layouts, such as <code>½&nbsp;…&nbsp;±&nbsp;÷&nbsp;×</code>, but these can be customized if you have different characters you are more likely to type. When using the KMonad implementation, for these characters to be printed correctly, you must ensure compose key combinations are configured consistently in both KMonad and the OS. On systems that don't support compose characters natively, this feature can be provided by an external tool, such as <a href="https://github.com/samhocevar/wincompose">WinCompose</a> for Windows.</p>
+
+<p>A couple of dead-keys have also been added, labelled <code>d'</code> and <code>d¨</code> for producing accented characters such as <code>é</code> and <code>ö</code>. The Symbols2 layer is activiated by first holding the Symbols1 thumb key and then holding down Shift. On keyboards with good thumb key support you could opt to use a dedicated single key instead.</p>
 
 <p>One further note regarding symbols, it is possible to type any of the symbols that would normally be made available via the AltGr key, where configured. For example, if AltGr-a usually produces <code>æ</code> on your system, you can reproduce this with <code>Ext-G&nbsp;a</code>. Using this technique can substantially increase the number of symbols that are available for you to type using keys right under your fingertips!</p>
 
