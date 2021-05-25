@@ -836,3 +836,6 @@ sub {
   bottom: -0.25em;
 }
 
+ul li {
+   margin:0 0 16px 0;   
+}
